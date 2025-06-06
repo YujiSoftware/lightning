@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>とある休日を Java で表現してみた</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="https://remarkjs.com/downloads/remark-0.15.0.min.js" type="text/javascript">
+    </script>
+    <meta name="twitter:card" content="とある休日を Java で表現してみた" />
+    <meta name="twitter:site" content="@YujiSoftware" />
+    <meta name="twitter:creator" content="@YujiSoftware" />
+    <meta property="og:url" content="https://yuji.software/lightning/2025spring/" />
+    <meta property="og:description" content="JJUG CCC 2025 Spring の LT です。" />
+    <meta property="og:title" content="とある休日を Java で表現してみた" />
+    <meta property="og:image" content="https://yuji.software/lightning/2025spring/card.png" />
+    <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+    @page {
+      size: 1210px 681px;
+      margin: 0
+    }
+    @media print{
+      .remark-slide-scaler{
+        width: 100% !important;
+        height: 100% !important;
+        transform: scale(1) !important;
+        top: 0 !important;
+        left:0 !important;
+      }
+    }
+
+    body { 
+      font-family: 'Noto Sans JP", sans-serif';
+    }
+    .remark-slide-scaler{
+      overflow: hidden;
+    }
+    .remark-code {
+      border: 3px silver solid;
+      border-radius: 15px;
+      font-size: 44px; /* 18px */
+      margin: 0 -10px;
+    }
+    .remark-code, .remark-inline-code {
+      font-family: "Source Code Pro", monospace;
+      font-optical-sizing: auto;
+      font-weight: 600;
+      font-style: normal;
+    }
+    .remark-inline-code {
+      /* font-style: italic; */
+      text-decoration: underline dotted;
+      color: #006;
+    }
+
+    .remark-slide-content {
+      font-size: 44px; /* 20px */
+      padding: 0.5em 2em;
+    }
+    .remark-slide-number {
+      display: none; /* ページ番号 */
+    }
+    .remark-slide-content h1 {
+      font-size:60px; /* 55px */
+    }
+    .remark-slide-content h2 {
+      font-size:50px; /* 45px */
+    }
+    .remark-slide-content h3 {
+      font-size:40px; /* 35px */
+    }
+    .remark-slide-content .highlight {
+      color: darkred;
+      font-weight: bold;
+    }
+
+    .underline {
+      text-decoration: underline;
+    }
+
+    .dotted .remark-code {
+      border: 3px black dotted;
+    }
+    
+    pre {
+      margin-bottom: 0.2em;
+    }
+
+    p {
+      margin: 22px 0;
+    }
+
+    .flex {
+      display: flex;
+    }
+    .flex > * {
+      flex: auto;
+    }
+    .flex > p {
+      margin: 0 0;
+    }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+<span style="font-size: 68px; font-weight: bold;">
+とある休日を  
+Java で表現してみた
+</span>
+
+<br>
+<img src="../photo.jpg" width="150px;" style="border-radius: 50%; vertical-align: middle;">
+
+@YujiSoftware
+
+---
+# 起床 🛏️
+
+```java
+walkup();
+```
+---
+# 二度寝 💤
+
+```java
+Thread.sleep( Duration.ofHours(3) );
+```
+
+---
+# 朝ご飯 🍞
+
+```java
+eat( new Breakfast().withLunch() );
+```
+
+---
+# 昼寝 💤
+
+```java
+Thread.sleep( Duration.ofHours(1) );
+```
+
+---
+# 勉強会の資料作成 ✏️
+
+```java
+getやる気().run( makeDocument );
+```
+
+---
+# 勉強会の資料作成 ✏️
+
+```java
+getやる気().run( makeDocument );
+```
+
+例外 java.lang.**NullPointerException:**  
+because the return value of **"getやる気()" is null**
+
+---
+# コーヒーを DI ☕
+
+```java
+getやる気( new Coffee() )
+     .run( makeDocument );
+```
+
+--
+ちょっと資料ができた！
+
+---
+# ちょっと休憩 🤳
+
+```java
+do {  
+  read( Twitter.getTweet() );  
+} while(true);
+```
+
+---
+# ちょっと休憩 🤳
+
+```java
+do {  
+  read( Twitter.getTweet() );  
+} while(true);
+```
+
+<div style="position: absolute; top: 270px; left: 310px; color: black;">
+―――――
+</div>
+
+
+<div class="flex">
+<p style="text-align: right;">
+<img src="bluebird_fired.png" style="width: 70%">
+</p>
+<p style="font-size: 50px;"><span style="font-weight: 600;">[deprecation]</span><br>Twitterは推奨されません。<br>X に置き換えらました。</p>
+</div>
+
+---
+# 部屋のお掃除 🧹
+
+```java
+// ゴミを捨てる
+System.gc();
+```
+---
+# 部屋のお掃除 🧹
+
+```java
+// ゴミを捨てる
+System.gc();
+
+// 本を片付ける
+stack.push( book );
+```
+
+---
+# 部屋のお掃除 🧹
+
+```java
+// ゴミを捨てる
+System.gc();
+
+// 本を片付ける
+stack.push( book );
+```
+<img src="stackoverflow.svg" width="80px" style="vertical-align: middle;"/>例外 java.lang.**StackOverflowError** (バグ？)
+
+---
+
+# 休日っぽいことをする
+
+```java
+game.play();  // ゲームする
+book.read();  // 本を読む
+shopping();   // 買い物する
+
+```
+
+---
+# 就寝 💤
+
+```java
+Thread.sleep( Duration.ofHours(8) );
+```
+
+---
+# 就寝 💤
+
+```java
+Thread.sleep( Duration.ofHours(8) );
+```
+
+java.lang.**InterruptedException: 寝付けない**
+
+---
+
+# また月曜日が始まる 🪫
+
+```java
+try {
+  alarm.rings();
+}
+```
+
+---
+
+class: center, middle
+
+# これはコードレビューを
+# 通るのか！？
+
+---
+
+class: center, middle
+
+<span style="font-size: 68px; font-weight: bold;">
+とある休日を  
+Java で表現してみた
+</span>
+
+<br>
+<img src="../photo.jpg" width="150px;" style="border-radius: 50%; vertical-align: middle;">
+
+@YujiSoftware
+
+    </textarea>
+    <script type="text/javascript">
+      var slideshow = remark.create({
+        highlightLines: true,
+        highlightStyle: "googlecode",
+        ratio: '16:9'
+      });
+    </script>
+  </body>
+</html>
