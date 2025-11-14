@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>相棒に頼ってみた</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="https://remarkjs.com/downloads/remark-0.15.0.min.js" type="text/javascript">
+    </script>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@YujiSoftware" />
+    <meta name="twitter:creator" content="@YujiSoftware" />
+    <meta name="twitter:image" content="https://yuji.software/lightning/2025spring/card.png">
+    <meta property="og:url" content="https://yuji.software/lightning/2025spring/" />
+    <meta property="og:description" content="JJUG CCC 2025 Fall の LT です。" />
+    <meta property="og:title" content="相棒に頼ってみた" />
+    <meta property="og:image" content="https://yuji.software/lightning/2025fall/card.png" />
+    <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+    @page {
+      size: 1210px 681px;
+      margin: 0
+    }
+    @media print{
+      .remark-slide-scaler{
+        width: 100% !important;
+        height: 100% !important;
+        transform: scale(1) !important;
+        top: 0 !important;
+        left:0 !important;
+      }
+    }
+
+    body { 
+      font-family: 'Noto Sans JP", sans-serif';
+    }
+    a {
+      color: rgb(0, 0, 238);
+    }
+    .remark-slide-scaler{
+      overflow: hidden;
+    }
+    .remark-code {
+      border: 5px silver double;
+      border-radius: 15px;
+      font-size: 32px; /* 18px */
+      margin: 0 -10px;
+      background-color: #F2F2F2 !important;
+    }
+    .remark-code, .remark-inline-code {
+      font-family: "Source Code Pro", monospace;
+      font-optical-sizing: auto;
+      font-weight: 600;
+      font-style: normal;
+    }
+    .remark-inline-code {
+      /* font-style: italic; */
+      text-decoration: underline dotted;
+      color: #006;
+    }
+
+
+    .remark-slide-content {
+      font-size: 38px; /* 20px */
+      padding: 0.5em 2em 0em 2em;
+    }
+    .remark-slide-content > * {
+      margin: 0.25em 0;
+    }
+    .remark-slide-number {
+      display: none; /* ページ番号 */
+    }
+    .remark-slide-content h1 {
+      font-size:58px; /* 55px */
+    }
+    .remark-slide-content h2 {
+      font-size:50px; /* 45px */
+    }
+    .remark-slide-content h3 {
+      font-size:40px; /* 35px */
+    }
+    .remark-slide-content .highlight {
+      color: darkred;
+      font-weight: bold;
+    }
+
+    .underline {
+      text-decoration: underline;
+    }
+
+    .dotted .remark-code {
+      border: 3px black dotted;
+    }
+    
+    .move {
+        animation: anim 0.5s ease-out;
+    }
+    @keyframes anim {
+        0% {
+            transform: translateX(300px);
+        }
+        100% {
+            transform: translateX(0px);
+        }
+    }
+
+    table{
+      border-collapse: collapse;
+      width: 100%;
+    }
+    thead > tr {
+      background-color: #222;
+      color: white;
+    }
+    td, th {
+      border: 2px solid #555;
+      padding: 0 0.5em;
+    }
+
+    table.bitmap tr td {
+      border: 1px solid #555;
+      line-height: 1.3
+    }
+
+    table.bitmap tr td:nth-child(1) {
+      font-size: 32px;
+      border: none;
+    }
+
+    table.bitmap tr td:nth-child(n+1) {
+      font-size: 34px;
+      padding: 0px 4px;
+      width: 100%;
+    }
+
+    table.bitmap tr td:nth-child(4n+1) {
+      border-right: 3px double black;
+    }
+
+    table.bitmap tr td.cyan {
+      background-color: paleturquoise;
+    }
+    table.bitmap tr td.pink {
+      background-color: pink;
+    }
+    table.bitmap tr td.yellow {
+      background-color: khaki;
+    }
+    table.bitmap tr td.orange {
+      background-color: orange ;
+    }
+    table.bitmap tr td.green {
+      background-color: palegreen;
+    }
+
+    hr {
+      border: 0;
+      border-bottom: 3px dashed #444;
+    }
+
+    div.note {
+      position: relative;
+      padding: 0.1em 0.5em;
+      border: 3px solid #22ac38;
+      border-radius: 0 10px 10px 10px;
+      background: #e3f5d8;
+      margin-top: 72px;
+      font-size: 32px;
+    }
+    div.note > p:first-child {
+      position: absolute;
+      top: -88px;
+      left: -3px;
+      height: 54px;
+      padding: 0 1em;
+      color: #fff;
+      border-radius: 10px 10px 0 0;
+      background: #22ac38;
+      font-weight: bold;
+    }
+    div.note > :nth-child(n + 2) {
+      margin: 0.5em auto;
+    }
+
+    div.memo {
+      position: relative;
+      padding: 0.1em 0.5em;
+      border: 3px solid rgba(13,110,253,1);
+      border-radius: 0 10px 10px 10px;
+      background: rgba(218, 232, 253, 1);
+      margin-top: 72px;
+      font-size: 32px;
+    }
+    div.memo > p:first-child {
+      position: absolute;
+      top: -88px;
+      left: -3px;
+      height: 54px;
+      padding: 0 1em;
+      color: #fff;
+      border-radius: 10px 10px 0 0;
+      background: rgba(13,110,253,1);
+      font-weight: bold;
+    }
+    div.memo > :nth-child(n + 2) {
+      margin: 0.5em auto;
+    }
+
+    span.remark {
+      font-size: 32px;
+      color: #444;
+    }
+
+    span.img {
+      display: block;
+      text-align: center;
+    }
+    span.array img {
+      height: 250px;
+    }
+
+    .flex {
+      display: flex;
+    }
+    .flex > * {
+      flex: 1;
+    }
+    .flex > p {
+      margin: 0 0;
+    }
+    .flex > ul {
+      margin: 0.25em 0;
+    }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+<span style="font-size: 68px; font-weight: bold;">
+相棒に頼ってみた
+</span>
+
+<br>
+<img src="../photo.jpg" width="150px;" style="border-radius: 50%; vertical-align: middle;">
+
+@YujiSoftware
+
+---
+
+# これまでの LT
+
+* たくさんやった
+  * とある休日を Java で表現してみた
+  * デスクトップPCでも指紋認証がしたい
+  * ラムダのコンパイル結果を5分で説明するよ
+  * Java をダウンロードしたお話
+  * Java でマサカリ投げてみた！
+  * ジャバの話 JAVA の話 Java の話
+* その結果…
+
+---
+
+class: center, middle
+
+# ついにネタ切れ！
+
+---
+
+# でも頼れる相棒がいる
+--
+<div style="text-align: center; height: 500px;  display: flex; justify-content: center; align-items: center;">
+<img src="chatgpt.png">
+</div>
+
+---
+
+# 頼んでみる
+
+わたし
+「Java の LT を作って」  
+--
+ChatGPT「いいね！  
+--
+タイトル案  
+--
+「Javaでここ1年で使って良かった小ネタ3つ」  
+--
+（短いLT向けに実用的でウケやすいネタを3つ盛り込みます）  
+--
+
+スライド構成（8枚：合計約7–8分）  
+--
+スライド1 — タイトル（30秒）  
+--
+スライド2 — アジェンダ（15秒）  
+--
+スライド3 — ネタ1：varで局所変数を簡潔に（60秒）  
+--
+スライド4 — ネタ2：Stream の toMap で衝突を防ぐ（90秒）  
+
+Javaでここ1年で使って良かった小ネタ3つ
+発表者：あなたの名前
+（1行で自己紹介：所属・興味分野）
+
+発表メモ：挨拶→自己紹介→「今日は短く3つだけ」って宣言。」
+
+
+---
+
+# 思ったこと
+
+わたし「**笑いが足りない**」
+
+--
+ChatGPT「了解、**技術LTに“ちゃんとウケる笑い” を足したバージョンを作り直します。**  
+
+---
+class: center, middle
+
+# Javaでここ1年で  
+# 使って良かった小ネタ3つ
+
+<br>
+<img src="../photo.jpg" width="150px;" style="border-radius: 50%; vertical-align: middle;">
+
+@YujiSoftware
+
+---
+
+# アジェンダ
+
+* var
+* toMap
+* record（新しいのに“新しさを感じない”やつ）
+
+<br>
+発表メモ  
+--
+Javaは進化が遅い？  
+--
+**大丈夫です、私たちもそんなに早く進化できないのでちょうどいいです。**
+
+---
+
+# var（共感系）
+
+* Java10で導入された型推論
+* 使えると便利
+* 使いすぎると読めなくなる
+
+```java
+var map = new HashMap<String, List<String>>();
+```
+--
+発表メモ（笑い）  
+Javaに var が入った時のみんなの反応：  
+--
+**“いや、Kotlin じゃん！”**  
+--
+**Java『違います！ぼ、僕は僕なんです！』**
+
+---
+
+# Collectors.toMap の衝突（鉄板ネタ）
+
+* キー衝突すると例外（現場でもよくある事故）
+
+```java
+var map = people.stream().collect(
+  Collectors.toMap(Person::name, Person::score)
+);
+```
+--
+発表メモ  
+Java『キーが重複してます！例外です！』  
+--
+Python『まぁとりあえず最後のにしとくね？』  
+--
+Java『……えっ』  
+--
+**（Java の“厳格さ”をいじると大抵ウケます）**
+
+---
+
+# record（新しいのに古く見えるネタ）
+
+```java
+public record Point(int x, int y) {}
+```
+--
+発表メモ  
+新機能のはずなのに、なんか“昔からありました感”がすごい。  
+--
+Javaの新機能ってだいたい、  
+**“おそらく最初から入っていると思われていたもの”**
+なんですよね。  
+--
+**（共感ネタで大体ウケる）**
+
+---
+
+class: center, middle
+
+## このままじゃ終われない…
+
+---
+
+# ダメ押しのお願い
+
+わたし「**せめて笑えるオチを作ってください**」  
+--
+ChatGPT「 **任せてください。**  
+Java の LT に合う “ちゃんとウケる” オチ を用意しました。」
+
+---
+
+# record オチ
+
+record が導入されて Java もどんどん新しくなってますが、
+私の現場のコードベースにはまだ一つもありません。  
+--
+──未来は明るい。でも私のプロジェクトだけは暗い。  
+--
+ありがとうございました！
+
+---
+
+class: center, middle
+
+# 結論
+
+ChatGPT に笑える LT を作ってもらうのは無理！！
+
+---
+
+class: center, middle
+
+<span style="font-size: 68px; font-weight: bold;">
+相棒に頼ってみた
+</span>
+
+<br>
+<img src="../photo.jpg" width="150px;" style="border-radius: 50%; vertical-align: middle;">
+
+@YujiSoftware
+
+    </textarea>
+    <script type="text/javascript">
+      var slideshow = remark.create({
+        highlightLines: true,
+        highlightStyle: "googlecode",
+        ratio: '16:9'
+      });
+    </script>
+  </body>
+</html>
